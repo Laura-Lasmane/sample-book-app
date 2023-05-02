@@ -67,7 +67,6 @@ def build(){
     bat "dir"
     bat "npm install"
     bat "npm install -g pm2"
-    bat "pm2 start app.js"
     bat "pm2 list"
 }
 
