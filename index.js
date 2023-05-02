@@ -10,6 +10,7 @@ const books = [
   { id: 3, title: '1984', author: 'George Orwell', pageCount: 328, country: 'United Kingdom' },
   { id: 4, title: 'One Hundred Years of Solitude', author: 'Gabriel Garcia Marquez', pageCount: 417, country: 'Colombia' },
   { id: 5, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', pageCount: 180, country: 'United States' },
+  { id: 6, title: 'Astoņi Kustoņi', author: 'I. Ziedonis', pageCount: 180, country: 'Latvia' },
 ];
 
 // Endpoint to get list of dummy books
