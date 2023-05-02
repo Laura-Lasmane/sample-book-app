@@ -5,44 +5,71 @@ pipeline {
 // Būvējuma izveide        
         stage('Build') {
             steps {
-                echo 'Build of node application is starting..'
+                script{
+                    build()
+                }
             }
         }
 // Būvējuma izvietošanu “DEV” vidē
         stage('Deploy to DEV') {
             steps {
-                echo 'Deployment to DEV has started..'
+                script{
+                    deploy("DEV")
+                }
             }
         }
 // Testu izpildi “DEV” vidē
         stage('Test on DEV') {
             steps {
-                echo 'Testing on DEV has started..'
+                script{
+                    test("DEV")
+                }
             }
         }
 // Būvējuma izvietošanu “STG” vidē
         stage('Deploy to STG') {
             steps {
-                echo 'Deployment to STG has started..'
+                script{
+                    deploy("STG")
+                }
             }
         }
 // Testu izpildi “STG” vidē
         stage('Test on STG') {
             steps {
-                echo 'Testing on STG has started..'
+                script{
+                    test("STG")
+                }
             }
         }
 // Būvējuma izvietošanu “PRD” vidē
         stage('Deploy to PRD') {
             steps {
-                echo 'Deployment to PRD has started..'
+                script{
+                    deploy("PRD")
+                }
             }
         }
 // Testu izpildi “PRD” vidē
         stage('Test on PRD') {
             steps {
-                echo 'Testing on PRD has started..'
+                script{
+                    test("PRD")
+                }
             }
         }
     }
+}
+
+// Funkcijas definēšana
+def deploy(String environment){
+    echo 'Build to ${environment} has started..'
+}
+
+def test(String environment){
+    echo 'Testing on ${environment} has started..'
+}
+
+def build(){
+    echo 'Build of node application is starting..'
 }
