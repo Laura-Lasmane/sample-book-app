@@ -63,13 +63,13 @@ pipeline {
 
 // Funkcijas definēšana
 def deploy(String environment){
-    echo 'Build to ${environment} has started..'
+    echo "Build to ${environment} has started.."
 }
 
 def test(String environment){
-    echo 'Testing on ${environment} has started..'
+    echo "Testing on ${environment} has started.."
 }
 
 def build(){
-    echo 'Build of node application is starting..'
+    echo "Build of node application is starting.."
 }
