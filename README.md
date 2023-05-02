@@ -5,7 +5,7 @@ npm install
 
 Start JS application:
 ```
-node controller.js
+node index.js
 ```
 
 Install pm2(node service orchestrator) as standalone 
