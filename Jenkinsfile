@@ -14,7 +14,7 @@ pipeline {
         stage('Deploy to DEV') {
             steps {
                 script{
-                    deploy("DEV")
+                    deploy("DEV", 1010)
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy to STG') {
             steps {
                 script{
-                    deploy("STG")
+                    deploy("STG", 1020)
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
         stage('Deploy to PRD') {
             steps {
                 script{
-                    deploy("PRD")
+                    deploy("PRD", 1030)
                 }
             }
         }
@@ -62,14 +62,18 @@ pipeline {
 }
 
 // Funkcijas definēšana
-def deploy(String environment){
-    echo "Build to ${environment} has started.."
+def build(){
+    echo "Build of node application is starting.."
+    bat "ls"
+    bat "npm install"
+}
+
+def deploy(String environment, int port){
+    echo "Deployment to ${environment} has started.."
+    bat "pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
 
 def test(String environment){
     echo "Testing on ${environment} has started.."
 }
 
-def build(){
-    echo "Build of node application is starting.."
-}
