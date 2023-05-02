@@ -64,7 +64,7 @@ pipeline {
 // Funkcijas definēšana
 def build(){
     echo "Build of node application is starting.."
-    bat "ls"
+    bat "ls -a"
     bat "npm install"
 }
 
