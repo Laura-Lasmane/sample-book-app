@@ -64,10 +64,10 @@ pipeline {
 // Funkcijas definēšana
 def build(){
     echo "Build of node application is starting.."
-    //bat "dir"
+    bat "dir"
     bat "npm install"
-    bat "npm install -g pm2"
-    bat "pm2 list"
+    //bat "npm install -g pm2"
+    //bat "pm2 list"
 }
 
 def deploy(String environment, int port){
