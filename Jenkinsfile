@@ -65,7 +65,7 @@ pipeline {
 def build(){
     echo "Build of node application is starting.."
     bat "dir"
-    bat "npm install"
+    bat "npm install pm2 -g"
 }
 
 def deploy(String environment, int port){
