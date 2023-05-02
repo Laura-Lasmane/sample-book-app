@@ -1,92 +1,48 @@
 pipeline {
     agent any
-    triggers{ pollSCM('*/1 * * * *') }
-    
 
     stages {
+// Būvējuma izveide        
         stage('Build') {
             steps {
-                script{
-                    build()
-                }
+                echo 'Build of node application is starting..'
             }
         }
+// Būvējuma izvietošanu “DEV” vidē
         stage('Deploy to DEV') {
             steps {
-                script{
-                    deploy("DEV", 1010)
-                }
+                echo 'Deployment to DEV has started..'
             }
         }
-        stage('Tests on DEV') {
+// Testu izpildi “DEV” vidē
+        stage('Test on DEV') {
             steps {
-                script{
-                    test("BOOKS", "DEV")
-                }
+                echo 'Testing on DEV has started..'
             }
         }
+// Būvējuma izvietošanu “STG” vidē
         stage('Deploy to STG') {
             steps {
-                script{
-                    deploy("STG", 2020)
-                }
+                echo 'Deployment to STG has started..'
             }
         }
-        stage('Tests on STG') {
+// Testu izpildi “STG” vidē
+        stage('Test on STG') {
             steps {
-                script{
-                    test("BOOKS", "STG")
-                }
+                echo 'Testing on STG has started..'
             }
         }
+// Būvējuma izvietošanu “PRD” vidē
         stage('Deploy to PRD') {
             steps {
-                script{
-                    deploy("PRD", 3030)
-                }
+                echo 'Deployment to PRD has started..'
             }
         }
-        stage('Tests on PRD') {
+// Testu izpildi “PRD” vidē
+        stage('Test on PRD') {
             steps {
-                script{
-                    test("BOOKS", "PRD")
-                }
+                echo 'Testing on PRD has started..'
             }
         }
     }
 }
-
-// for windows: bat "npm.."
-// for linux/macos: sh "npm .."
-
-def build(){
-    echo "Building of node application is starting.."
-    sh "ls"
-    sh "npm install"
-    // sh "npm test"
-}
-
-def deploy(String environment, int port){
-    echo "Deployment to ${environment} has started.."
-    git branch: 'main', url: 'https://github.com/mtararujs/sample-book-app.git'
-    sh "npm install"
-    sh "pm2 delete \"books-${environment}\""
-    sh "pm2 start -n \"books-${environment}\" index.js -- ${port}"
-}
-
-def test(String test_set, String environment){
-    echo "Testing ${test_set} test set on ${environment} has started.."
-    git branch: 'main', poll: false, url: 'https://github.com/mtararujs/course-js-api-framework.git'
-    sh "ls"
-    sh "npm install"
-    sh "npm run ${test_set} ${test_set}_${environment}"
-}
-
-
-// Būvējuma izveidi;
-// Būvējuma izvietošanu “DEV” vidē;
-// Testu izpildi “DEV” vidē;
-// Būvējuma izvietošanu “STG” vidē;
-// Testu izpildi “STG” vidē;
-// Būvējuma izvietošanu “PRD” vidē;
-// Testu izpildi “PRD” vidē;
