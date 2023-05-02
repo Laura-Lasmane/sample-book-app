@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    triggers{ pollSCM('*/1 * * * *') }
     stages {
 // Būvējuma izveide        
         stage('Build') {
