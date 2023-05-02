@@ -14,7 +14,7 @@ pipeline {
         stage('Deploy to DEV') {
             steps {
                 script{
-                    deploy("DEV", 3000)
+                    deploy("DEV", 1010)
                 }
             }
         }
@@ -65,7 +65,7 @@ pipeline {
 def build(){
     echo "Build of node application is starting.."
     bat "dir"
-    bat "npm install pm2 -g"
+    bat "npm install -g pm2"
 }
 
 def deploy(String environment, int port){
