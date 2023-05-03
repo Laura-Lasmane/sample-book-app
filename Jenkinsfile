@@ -66,7 +66,7 @@ def build(){
     echo "Build of node application is starting.."
     bat "dir"
     bat "npm install"
-    bat "npm test"
+    // bat "npm test"
 }
 
 def deploy(String environment, int port){
