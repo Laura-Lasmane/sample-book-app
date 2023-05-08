@@ -72,6 +72,7 @@ def build(){
 def deploy(String environment, int port){
     echo "Deployment to ${environment} has started.."
     git branch: 'main', url: 'https://github.com/Laura-Lasmane/sample-book-app.git'
+    bat "npm install"
     bat "pm2 delete \"books-${environment}\""
     bat "pm2 start -n \"books-${environment}\" index.js -- ${port}"
 }
