@@ -1,7 +1,8 @@
 runs:   
   using: "composite"
   steps:
-    - name: Print output
-      run: echo Build of node application is starting..
     - name: Install dependencies
-      run: npm install
+      run: |
+        echo Build of node application is starting..
+        npm install
+      shell: powershell
