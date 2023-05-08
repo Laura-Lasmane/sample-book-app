@@ -14,6 +14,9 @@ runs:
     - name: Install dependencies
       run: npm install
       shell: powershell
+    - name: Delete service
+      run: pm2 delete "books-${{ inputs.environment }}"
+      shell: powershell
     - name: Start service
       run: pm2 start -n "books-${{ inputs.environment }}" index.js -- ${{ inputs.port }}
       shell: powershell
