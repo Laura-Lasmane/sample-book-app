@@ -1,0 +1,16 @@
+inputs:
+  test_set:
+    description: 'Specify test set to run'
+    default: 'BOOKS'
+  environment:
+    description: 'Testing environment'
+    default: 'DEV'
+runs:   
+  using: "composite"
+  steps:
+    - name: Print output
+      run: echo Testing ${{ input.test_set }} test set on ${{ inputs.environment }} has started..
+    - name: Install dependencies
+      run: npm install
+    - name: Execute REST API integration tests
+      run: npm run ${{ input.test_set }} ${{ input.test_set }}_${{ inputs.environment }}
