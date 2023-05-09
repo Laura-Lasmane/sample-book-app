@@ -15,7 +15,7 @@ runs:
       run: npm install
       shell: powershell
     - name: Delete service
-      run: pm2 delete "books-${{ inputs.environment }}" || true
+      run: pm2 delete "books-${{ inputs.environment }}"; if ($LASTEXITCODE -eq 100) { $true }
       shell: powershell
     - name: Start service
       run: pm2 start -n "books-${{ inputs.environment }}" index.js -- ${{ inputs.port }}
