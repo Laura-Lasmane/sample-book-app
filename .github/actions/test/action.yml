@@ -9,7 +9,7 @@ runs:
   using: "composite"
   steps: 
     - name: Install depedencies and run REST API integration tests
-      working-directory: ./api-tests
+      working-directory: api-tests
       run: |
         echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
         dir
@@ -20,4 +20,4 @@ runs:
       uses: actions/upload-artifact@v3
       with: 
         name: test-report
-        path: ./api-tests/mochawesome-report
+        path: mochawesome-report
