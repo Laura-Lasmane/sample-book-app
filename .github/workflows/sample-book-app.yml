@@ -58,8 +58,8 @@ jobs:
  #         environment: 'STG'
 
   deploy-prd:
-  #  runs-on: self-hosted
-    needs: [test-stg]
+    runs-on: self-hosted
+  #  needs: [test-stg]
     steps:
       - uses: actions/checkout@v3.5.2
       - uses: ./.github/actions/deploy
