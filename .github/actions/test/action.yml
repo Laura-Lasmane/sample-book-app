@@ -17,8 +17,7 @@ runs:
         npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
       shell: cmd
     - name: Upload report as artifact
-      working-directory: api-tests
       uses: actions/upload-artifact@v3
       with: 
         name: test-report
-        path: mochawesome-report
+        path: api-test/mochawesome-report
