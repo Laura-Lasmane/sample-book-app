@@ -14,4 +14,4 @@ runs:
         dir
         npm install
         npm run ${{ input.test_set }} ${{ input.test_set }}_${{ inputs.environment }}
-      shell: powershell
+      shell: cmd

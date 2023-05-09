@@ -5,4 +5,4 @@ runs:
       run: |
         echo Build of node application is starting..
         npm install
-      shell: powershell
+      shell: cmd
