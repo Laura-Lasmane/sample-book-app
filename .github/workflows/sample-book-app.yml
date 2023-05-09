@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v3.5.2
       - uses: ./.github/actions/deploy
         with:
-          port: 1010
+          port: 1110
           environment: 'DEV'
 
   test-dev:
@@ -30,6 +30,8 @@ jobs:
     needs: [deploy-dev]
     steps:
       - uses: actions/checkout@v3.5.2
+        with:
+          repository: 'Laura-Lasmane/course-js-api-framework'
       - uses: ./.github/actions/test
         with:
           environment: 'DEV'
@@ -41,7 +43,7 @@ jobs:
       - uses: actions/checkout@v3.5.2
       - uses: ./.github/actions/deploy
         with:
-          port: 1020
+          port: 1120
           environment: 'STG'
 
   test-stg:
@@ -49,6 +51,8 @@ jobs:
     needs: [deploy-stg]
     steps:
       - uses: actions/checkout@v3.5.2
+        with:
+          repository: 'Laura-Lasmane/course-js-api-framework'
       - uses: ./.github/actions/test
         with:
           environment: 'STG'
@@ -60,7 +64,7 @@ jobs:
       - uses: actions/checkout@v3.5.2
       - uses: ./.github/actions/deploy
         with:
-          port: 1030
+          port: 1130
           environment: 'PRD'
 
   test-prd:
@@ -68,6 +72,8 @@ jobs:
     needs: [deploy-prd]
     steps:
       - uses: actions/checkout@v3.5.2
+        with:
+          repository: 'Laura-Lasmane/course-js-api-framework'
       - uses: ./.github/actions/test
         with:
           environment: 'PRD'

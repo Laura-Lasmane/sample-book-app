@@ -11,6 +11,7 @@ runs:
     - name: Install dependencies and run REST API integration tests
       run: |
         echo Testing ${{ input.test_set }} test set on ${{ inputs.environment }} has started..
+        dir
         npm install
         npm run ${{ input.test_set }} ${{ input.test_set }}_${{ inputs.environment }}
       shell: powershell
