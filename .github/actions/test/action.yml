@@ -5,13 +5,20 @@ inputs:
   environment:
     description: 'Testing environment'
     default: 'DEV'
-runs:   
+runs:
   using: "composite"
-  steps:
-    - name: Install dependencies and run REST API integration tests
+  steps: 
+    - name: Install depedencies and run REST API integration tests
+      working-directory: api-tests
       run: |
-        echo Testing ${{ input.test_set }} test set on ${{ inputs.environment }} has started..
+        echo Testing ${{ inputs.test_set }} test set on ${{ inputs.environment }} has started..
         dir
         npm install
-        npm run ${{ input.test_set }} ${{ input.test_set }}_${{ inputs.environment }}
+        npm run ${{ inputs.test_set }} ${{ inputs.test_set }}_${{ inputs.environment }}
       shell: cmd
+    - name: Upload report as artifact
+      working-directory: api-tests
+      uses: actions/upload-artifact@v3
+      with: 
+        name: test-report
+        path: mochawesome-report
