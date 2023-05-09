@@ -17,7 +17,7 @@ jobs:
 
   deploy-dev:
     runs-on: self-hosted
-    needs: [build]
+ #   needs: [build]
     steps:
       - uses: actions/checkout@v3.5.2
       - uses: ./.github/actions/deploy
@@ -38,7 +38,7 @@ jobs:
 
   deploy-stg:
     runs-on: self-hosted
-    needs: [test-dev]
+  #  needs: [test-dev]
     steps:
       - uses: actions/checkout@v3.5.2
       - uses: ./.github/actions/deploy
@@ -58,7 +58,7 @@ jobs:
  #         environment: 'STG'
 
   deploy-prd:
-    runs-on: self-hosted
+  #  runs-on: self-hosted
     needs: [test-stg]
     steps:
       - uses: actions/checkout@v3.5.2
